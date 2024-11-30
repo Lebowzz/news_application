@@ -2,6 +2,8 @@ package com.usj.news_application.adapters
 
 import android.view.LayoutInflater
 import android.view.View
+import com.usj.news_application.models.News
+import com.usj.news_application.R
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView

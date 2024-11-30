@@ -1,6 +1,6 @@
 package com.usj.news_application.models
 
-data class NewsItem(
+data class News(
     val id: String,
     val Title: String,
     val content: String,
