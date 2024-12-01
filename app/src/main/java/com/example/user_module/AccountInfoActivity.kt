@@ -1,14 +1,18 @@
 package com.example.user_module
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class AccountInfoActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var dbHelper: DatabaseHelper
+    private val viewModel: AccountInfoViewModel by viewModels {
+        AccountInfoViewModelFactory(UserRepository(DatabaseHelper(this)))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,9 +21,12 @@ class AccountInfoActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewAccountInfo)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        dbHelper = DatabaseHelper(this)
+        // Observe the ViewModel for user data
+        viewModel.users.observe(this, Observer { users ->
+            recyclerView.adapter = AccountInfoAdapter(users)
+        })
 
-        val userList = dbHelper.getAllUsers()
-        recyclerView.adapter = AccountInfoAdapter(userList)
+        // Load users
+        viewModel.loadUsers()
     }
 }

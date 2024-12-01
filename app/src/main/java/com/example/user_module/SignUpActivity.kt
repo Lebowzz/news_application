@@ -5,18 +5,21 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 
 class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var dbHelper: DatabaseHelper
+    // Initialize ViewModel using Factory
+    private val viewModel: SignUpViewModel by viewModels {
+        SignUpViewModelFactory(UserRepository(DatabaseHelper(this)))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        dbHelper = DatabaseHelper(this)
-
+        // Initialize UI components
         val etFirstName = findViewById<EditText>(R.id.etFirstName)
         val etLastName = findViewById<EditText>(R.id.etLastName)
         val etEmail = findViewById<EditText>(R.id.etEmailSignUp)
@@ -24,6 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         val etBirthDate = findViewById<EditText>(R.id.etBirthDate)
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
 
+        // Handle Sign-Up
         btnSignUp.setOnClickListener {
             val firstName = etFirstName.text.toString()
             val lastName = etLastName.text.toString()
@@ -31,18 +35,12 @@ class SignUpActivity : AppCompatActivity() {
             val password = etPassword.text.toString()
             val birthdate = etBirthDate.text.toString()
 
-            if (firstName.isNotBlank() && lastName.isNotBlank() && email.isNotBlank() && password.isNotBlank() && birthdate.isNotBlank()) {
-                val isInserted = dbHelper.insertUser(firstName, lastName, email, password, birthdate)
-                if (isInserted) {
-                    Toast.makeText(this, "Account Created Successfully!", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(this, "Failed to create account. Email might already exist.", Toast.LENGTH_SHORT).show()
-                }
+            if (viewModel.registerUser(firstName, lastName, email, password, birthdate)) {
+                Toast.makeText(this, "Account Created Successfully!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
             } else {
-                Toast.makeText(this, "Please fill out all fields.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to create account. Email might already exist.", Toast.LENGTH_SHORT).show()
             }
         }
     }
