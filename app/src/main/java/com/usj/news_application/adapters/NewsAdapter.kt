@@ -26,7 +26,7 @@ class NewsAdapter(private val newsList: List<News>) :
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val news = newsList[position]
-        holder.title.text = news.Title
+        holder.title.text = news.title
         holder.content.text = news.content
         holder.location.text = news.location
         holder.datetime.text = news.datetime
