@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <style name="Theme.News_application" parent="android:Theme.Material.Light.NoActionBar" />
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.News_application" parent="Theme.AppCompat.Light.DarkActionBar" />
 </resources>
