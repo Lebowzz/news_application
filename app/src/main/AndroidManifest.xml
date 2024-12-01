@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -15,9 +15,9 @@
         android:theme="@style/Theme.News_application"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".views.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/news_page_name"
             android:theme="@style/Theme.News_application">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

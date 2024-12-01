@@ -2,35 +2,39 @@ package com.usj.news_application.adapters
 
 import android.view.LayoutInflater
 import android.view.View
-import com.usj.news_application.models.News
-import com.usj.news_application.R
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.usj.news_application.R
+import com.usj.news_application.models.News
 
-class NewsAdapter(private val newsList: List<News>) :
-    RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter : ListAdapter<News, NewsAdapter.NewsViewHolder>(DIFF_CALLBACK) {
 
-    class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title: TextView = view.findViewById(R.id.title)
-        val content: TextView = view.findViewById(R.id.content)
-        val location: TextView = view.findViewById(R.id.location)
-        val datetime: TextView = view.findViewById(R.id.datetime)
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<News>() {
+            override fun areItemsTheSame(oldItem: News, newItem: News): Boolean =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: News, newItem: News): Boolean =
+                oldItem == newItem
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.news_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.news_page, parent, false)
         return NewsViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val news = newsList[position]
-        holder.title.text = news.title
-        holder.content.text = news.content
-        holder.location.text = news.location
-        holder.datetime.text = news.datetime
+        val newsItem = getItem(position)
+        holder.title.text = newsItem.title
+        holder.description.text = newsItem.content
     }
 
-    override fun getItemCount(): Int = newsList.size
+    class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title: TextView = itemView.findViewById(R.id.title)
+        val description: TextView = itemView.findViewById(R.id.content)
+    }
 }

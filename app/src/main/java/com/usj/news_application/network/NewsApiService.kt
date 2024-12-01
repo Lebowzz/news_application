@@ -6,5 +6,5 @@ import com.usj.news_application.models.News
 
 interface NewsApiService {
     @GET("news")
-    fun getNews(): Call<List<News>>
+    suspend fun getNews(): List<News>
 }

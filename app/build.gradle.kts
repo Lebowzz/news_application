@@ -66,6 +66,9 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.androidx.appcompat)
 
+    // Fragment KTX dependency for viewModels
+    implementation(libs.androidx.fragment.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
