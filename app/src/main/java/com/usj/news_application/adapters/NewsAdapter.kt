@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.usj.news_application.R
 import com.usj.news_application.models.News
 
-class NewsAdapter : ListAdapter<News, NewsAdapter.NewsViewHolder>(DIFF_CALLBACK) {
+class NewsAdapter(private val onItemClick: (News) -> Unit) : ListAdapter<News, NewsAdapter.NewsViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<News>() {
@@ -35,6 +35,9 @@ class NewsAdapter : ListAdapter<News, NewsAdapter.NewsViewHolder>(DIFF_CALLBACK)
         holder.description.text = newsItem.content
         holder.location.text = newsItem.location
         holder.datetime.text = newsItem.datetime.replace('T', ' ')
+        holder.itemView.setOnClickListener {
+            onItemClick(newsItem) // Pass the clicked news item
+        }
     }
 
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -34,7 +34,15 @@ class NewsPage : Fragment() {
         val progressBar: ProgressBar = view.findViewById(R.id.progress_bar)
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
 
-        val adapter = NewsAdapter()
+        val adapter = NewsAdapter { selectedNews ->
+            val intent = Intent(requireContext(), NewsDetailPage::class.java).apply {
+                putExtra("NEWS_TITLE", selectedNews.title)
+                putExtra("NEWS_CONTENT", selectedNews.content)
+            }
+            startActivity(intent)
+        }
+        recyclerView.adapter = adapter
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
