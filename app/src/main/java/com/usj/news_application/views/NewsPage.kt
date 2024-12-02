@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.usj.news_application.R
 import com.usj.news_application.viewmodels.NewsPageViewModel
 import com.usj.news_application.adapters.NewsAdapter
@@ -21,6 +22,7 @@ import com.usj.news_application.workers.NewsNotificationWorker
 class NewsPage : Fragment() {
     private val viewModel: NewsPageViewModel by viewModels()
     private lateinit var newsUpdateReceiver: BroadcastReceiver
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,17 +32,23 @@ class NewsPage : Fragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.news_recycler_view)
         val progressBar: ProgressBar = view.findViewById(R.id.progress_bar)
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
 
         val adapter = NewsAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            progressBar.visibility = if (it) View.VISIBLE else View.GONE
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            swipeRefreshLayout.isRefreshing = isLoading
         }
 
         viewModel.newsList.observe(viewLifecycleOwner) { news ->
             adapter.submitList(news)
+        }
+
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.loadNews()
         }
 
         newsUpdateReceiver = object : BroadcastReceiver() {

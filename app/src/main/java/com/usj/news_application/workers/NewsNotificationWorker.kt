@@ -26,9 +26,9 @@ class NewsNotificationWorker(
         fun schedulePeriodicWork(context: Context) {
             val newsWorkRequest = PeriodicWorkRequestBuilder<NewsNotificationWorker>(
                 15, // Interval
-                TimeUnit.SECONDS, // Changed to minutes for production
+                TimeUnit.MINUTES, // Changed to minutes for production
                 5, // Flex interval
-                TimeUnit.SECONDS
+                TimeUnit.MINUTES
             ).setConstraints(
                 Constraints.Builder()
                     .setRequiredNetworkType(NetworkType.CONNECTED)
