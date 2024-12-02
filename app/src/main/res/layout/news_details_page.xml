@@ -25,14 +25,15 @@
             android:textSize="14sp"
             android:textStyle="italic"
             android:gravity="end"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/secondary_text_color"/>
 
         <TextView
             android:id="@+id/news_datetime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/secondary_text_color"
             android:gravity="end"
             android:layout_marginBottom="16dp"/>
 
@@ -48,14 +49,14 @@
                 android:layout_marginBottom="16dp"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@color/primary_text_color"/>
 
             <TextView
                 android:id="@+id/news_detailed_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@color/primary_text_color"
                 android:layout_marginTop="16dp"/>
         </LinearLayout>
     </LinearLayout>

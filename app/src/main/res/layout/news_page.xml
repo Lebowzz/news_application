@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/primary_text_color"
             android:textStyle="bold"
             tools:text="Sample Title" />
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/primary_text_color"
             tools:text="Sample content goes here." />
 
         <LinearLayout
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                android:textColor="#999999"
+                android:textColor="@color/secondary_text_color"
                 tools:text="New York, USA"/>
 
             <TextView
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:textColor="#999999"
+                android:textColor="@color/secondary_text_color"
                 tools:text="2 hours ago"/>
         </LinearLayout>
     </LinearLayout>
