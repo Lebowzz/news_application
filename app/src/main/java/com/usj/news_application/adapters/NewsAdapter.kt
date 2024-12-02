@@ -1,5 +1,6 @@
 package com.usj.news_application.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,12 +30,17 @@ class NewsAdapter : ListAdapter<News, NewsAdapter.NewsViewHolder>(DIFF_CALLBACK)
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val newsItem = getItem(position)
+        Log.d("NewsAdapter", "Binding title: ${newsItem.title}")
         holder.title.text = newsItem.title
         holder.description.text = newsItem.content
+        holder.location.text = newsItem.location
+        holder.datetime.text = newsItem.datetime.replace('T', ' ')
     }
 
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.title)
         val description: TextView = itemView.findViewById(R.id.content)
+        val location: TextView = itemView.findViewById(R.id.location)
+        val datetime: TextView = itemView.findViewById(R.id.datetime)
     }
 }
