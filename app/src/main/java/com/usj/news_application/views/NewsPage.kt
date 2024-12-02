@@ -38,6 +38,9 @@ class NewsPage : Fragment() {
             val intent = Intent(requireContext(), NewsDetailPage::class.java).apply {
                 putExtra("NEWS_TITLE", selectedNews.title)
                 putExtra("NEWS_CONTENT", selectedNews.content)
+                putExtra("NEWS_LOCATION", selectedNews.location)
+                putExtra("NEWS_DATETIME", selectedNews.datetime)
+                putExtra("NEWS_DETAILED_DESCRIPTION", selectedNews.detailedDescription)
             }
             startActivity(intent)
         }

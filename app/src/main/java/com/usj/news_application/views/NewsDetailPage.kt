@@ -22,8 +22,15 @@ class NewsDetailPage : AppCompatActivity() {
 
         val title = intent.getStringExtra("NEWS_TITLE")
         val content = intent.getStringExtra("NEWS_CONTENT")
+        val location = intent.getStringExtra("NEWS_LOCATION")
+        val datetime = intent.getStringExtra("NEWS_DATETIME")
+        val detailedDescription = intent.getStringExtra("NEWS_DETAILED_DESCRIPTION")
 
-        findViewById<TextView>(R.id.news_title).text = title
+        supportActionBar?.title = title ?: "News Details"
+
         findViewById<TextView>(R.id.news_content).text = content
+        findViewById<TextView>(R.id.news_location).text = location
+        findViewById<TextView>(R.id.news_datetime).text = datetime
+        findViewById<TextView>(R.id.news_detailed_description).text = detailedDescription
     }
 }
