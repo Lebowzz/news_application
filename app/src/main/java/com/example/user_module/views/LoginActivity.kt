@@ -5,32 +5,31 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.user_module.viewmodels.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
-    // Initialize ViewModel using Factory
-    private val viewModel: LoginViewModel by viewModels {
-        LoginViewModelFactory(UserRepository(DatabaseHelper(this)))
-    }
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize UI components
         val etEmail = findViewById<EditText>(R.id.etEmailLogin)
         val etPassword = findViewById<EditText>(R.id.etPasswordLogin)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnGoToSignUp = findViewById<Button>(R.id.btnGoToSignUp)
 
-        // Handle Login
+        // Initialize ViewModel
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
-            if (viewModel.validateUser(email, password)) {
+            if (viewModel.validateUser(this, email, password)) { // Pass the context for DB operations
                 Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, AccountInfoActivity::class.java))
                 finish()
@@ -39,7 +38,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // Handle Navigation to Sign-Up
         btnGoToSignUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }

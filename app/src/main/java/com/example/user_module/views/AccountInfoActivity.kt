@@ -1,18 +1,17 @@
 package com.example.user_module
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.user_module.adapters.AccountInfoAdapter
+import com.example.user_module.viewmodels.AccountInfoViewModel
 
 class AccountInfoActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private val viewModel: AccountInfoViewModel by viewModels {
-        AccountInfoViewModelFactory(UserRepository(DatabaseHelper(this)))
-    }
+    private lateinit var viewModel: AccountInfoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,12 +20,13 @@ class AccountInfoActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewAccountInfo)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Observe the ViewModel for user data
-        viewModel.users.observe(this, Observer { users ->
-            recyclerView.adapter = AccountInfoAdapter(users)
-        })
+        // Initialize ViewModel
+        viewModel = ViewModelProvider(this).get(AccountInfoViewModel::class.java)
 
-        // Load users
-        viewModel.loadUsers()
+        // Observe the ViewModel
+        viewModel.loadUsers(this) // Pass the context to fetch data from the database
+        viewModel.users.observe(this) { users ->
+            recyclerView.adapter = AccountInfoAdapter(users)
+        }
     }
 }
