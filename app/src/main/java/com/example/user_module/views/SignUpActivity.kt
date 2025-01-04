@@ -1,4 +1,4 @@
-package com.example.user_module
+package com.example.user_module.views
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.user_module.R
 import com.example.user_module.viewmodels.SignUpViewModel
 
 class SignUpActivity : AppCompatActivity() {

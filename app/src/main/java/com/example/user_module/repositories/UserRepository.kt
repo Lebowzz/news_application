@@ -1,4 +1,7 @@
-package com.example.user_module
+package com.example.user_module.repositories
+
+import com.example.user_module.DatabaseHelper
+import com.example.user_module.models.User
 
 class UserRepository(private val databaseHelper: DatabaseHelper) {
 

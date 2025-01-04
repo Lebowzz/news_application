@@ -1,4 +1,4 @@
-package com.example.user_module
+package com.example.user_module.views
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.user_module.R
 import com.example.user_module.viewmodels.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -23,15 +24,23 @@ class LoginActivity : AppCompatActivity() {
         val btnGoToSignUp = findViewById<Button>(R.id.btnGoToSignUp)
 
         // Initialize ViewModel
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
             if (viewModel.validateUser(this, email, password)) { // Pass the context for DB operations
+                // Save the logged-in user's email in SharedPreferences
+                val sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("loggedInEmail", email) // Store the logged-in user's email
+                editor.apply()
+
                 Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, AccountInfoActivity::class.java))
+
+                // Navigate to NewsPageActivity
+                startActivity(Intent(this, NewsPageActivity::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show()

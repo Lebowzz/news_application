@@ -1,10 +1,13 @@
-package com.example.user_module
+package com.example.user_module.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.user_module.R
+import com.example.user_module.models.User
+
 
 class AccountInfoAdapter(private val userList: List<User>) :
     RecyclerView.Adapter<AccountInfoAdapter.AccountInfoViewHolder>() {

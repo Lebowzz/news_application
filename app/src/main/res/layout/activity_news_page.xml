@@ -1,0 +1,49 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:fillViewport="true"> <!-- Ensures content fills the viewport -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Buttons for Login and Display Info Pages -->
+        <Button
+            android:id="@+id/btnLoginPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login Page"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnDisplayInfoPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Display Info Page"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Admin Authentication Section -->
+        <EditText
+            android:id="@+id/etAdminUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Admin Username"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etAdminPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Admin Password"
+            android:inputType="textPassword"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnAdminLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Admin Login" />
+    </LinearLayout>
+</ScrollView>

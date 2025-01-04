@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.user_module">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
 
         <!-- Login Activity as the Launcher -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".views.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +20,21 @@
         </activity>
 
         <!-- Sign-Up Activity -->
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".views.SignUpActivity" />
 
         <!-- Account Info Activity -->
-        <activity android:name=".AccountInfoActivity" />
+        <activity android:name=".views.AccountInfoActivity" />
 
-        <!-- Main Activity (if unused, consider removing it) -->
-        <activity android:name=".MainActivity" />
+        <!-- News Page Activity -->
+        <activity android:name=".views.NewsPageActivity" />
+
+        <!-- Admin Dashboard Activity -->
+        <activity android:name=".views.AdminDashboardActivity" />
+
+        <!-- Edit User Info Activity -->
+        <activity android:name=".views.EditUserInfoActivity" />
+
+        <!-- Main Activity -->
+        <activity android:name=".views.MainActivity" />
     </application>
-
 </manifest>

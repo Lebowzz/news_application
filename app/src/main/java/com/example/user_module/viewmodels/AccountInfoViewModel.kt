@@ -1,11 +1,11 @@
-package com.example.user_module.models
+package com.example.user_module.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.user_module.DatabaseHelper
-import com.example.user_module.User
+import com.example.user_module.models.User
 import com.example.user_module.repositories.UserRepository
 
 class AccountInfoViewModel : ViewModel() {
