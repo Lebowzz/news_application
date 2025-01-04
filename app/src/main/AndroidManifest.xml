@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,20 +16,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.News_application"
         tools:targetApi="31">
+
+        <!-- LoginActivity as the launcher -->
+        <activity
+            android:name=".views.LoginActivity"
+            android:exported="true"
+            android:label="@string/login_page_name"
+            android:theme="@style/Theme.News_application">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity hosting the NewsPage -->
         <activity
             android:name=".views.MainActivity"
             android:exported="true"
             android:label="@string/news_page_name"
-            android:theme="@style/Theme.News_application">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.News_application" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <!-- Other Activities -->
         <activity
             android:name=".views.NewsDetailPage"
             android:exported="false" />
-    </application>
+        <activity
+            android:name=".views.SignUpActivity"
+            android:exported="true"
+            android:label="@string/signup_page_name" />
+        <activity
+            android:name=".views.AccountInfoActivity"
+            android:exported="true"
+            android:label="@string/account_info_page_name" />
+        <activity
+            android:name=".views.EditUserInfoActivity"
+            android:exported="true"
+            android:label="@string/edit_user_info_page_name"
+            android:theme="@style/Theme.News_application" />
 
+    </application>
 </manifest>

@@ -10,9 +10,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Schedule periodic work
+        // Schedule periodic work for notifications
         NewsNotificationWorker.schedulePeriodicWork(this)
 
+        // Load the NewsPage fragment into the fragment container
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, NewsPage())
             .commit()
