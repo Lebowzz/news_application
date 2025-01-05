@@ -7,8 +7,5 @@
     <string name="admin_dashboard_page_name">Admin Dashboard</string>
     <string name="edit_user_info_page_name">Edit User Info</string>
     <string name="user_info">User Info</string>
-
-        <string name="admin_dashboard">Admin Dashboard</string>
-
-
+    <string name="admin_auth_page_name">Admin Authentication</string>
 </resources>

@@ -1,11 +1,9 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Header TextView -->
     <TextView
         android:id="@+id/tvHeader"
         android:layout_width="match_parent"
@@ -16,8 +14,18 @@
         android:gravity="center"
         android:padding="16dp" />
 
-    <!-- User Info Section -->
+    <Button
+        android:id="@+id/btnAdminDashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_alignParentTop="true" />
+
     <LinearLayout
+        android:layout_below="@id/tvHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -56,11 +64,11 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <!-- Edit Info Button -->
     <Button
         android:id="@+id/btnEditInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Edit Info"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="16dp" />
-</LinearLayout>
+</RelativeLayout>

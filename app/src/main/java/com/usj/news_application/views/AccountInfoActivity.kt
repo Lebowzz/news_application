@@ -1,10 +1,12 @@
 package com.usj.news_application.views
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.usj.news_application.DatabaseHelper
 import com.usj.news_application.R
@@ -20,6 +22,7 @@ class AccountInfoActivity : AppCompatActivity() {
         databaseHelper = DatabaseHelper(this)
 
         val btnEditInfo = findViewById<Button>(R.id.btnEditInfo)
+        val btnAdminDashboard = findViewById<Button>(R.id.btnAdminDashboard)
         val tvFirstName = findViewById<TextView>(R.id.tvFirstName)
         val tvLastName = findViewById<TextView>(R.id.tvLastName)
         val tvEmail = findViewById<TextView>(R.id.tvEmail)
@@ -28,6 +31,7 @@ class AccountInfoActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
         val loggedInEmail = sharedPreferences.getString("loggedInEmail", null)
 
+        // Populate user info
         if (loggedInEmail != null) {
             val user = databaseHelper.getUserByEmail(loggedInEmail)
             if (user != null) {
@@ -47,5 +51,38 @@ class AccountInfoActivity : AppCompatActivity() {
             val intent = Intent(this, EditUserInfoActivity::class.java)
             startActivity(intent)
         }
+
+        btnAdminDashboard.setOnClickListener {
+            showAdminAuthDialog()
+        }
+    }
+
+    private fun showAdminAuthDialog() {
+        val builder = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.dialog_admin_auth, null)
+
+        val etUsername = view.findViewById<TextView>(R.id.etAdminUsername)
+        val etPassword = view.findViewById<TextView>(R.id.etAdminPassword)
+
+        builder.setView(view)
+        builder.setTitle("Admin Authentication")
+        builder.setPositiveButton("Login") { dialog, _ ->
+            val username = etUsername.text.toString().trim()
+            val password = etPassword.text.toString().trim()
+
+            if (username == "admin" && password == "admin") {
+                dialog.dismiss()
+                val intent = Intent(this, AdminDashboardActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Invalid admin credentials", Toast.LENGTH_SHORT).show()
+            }
+        }
+        builder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
     }
 }

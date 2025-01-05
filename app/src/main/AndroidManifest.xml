@@ -54,5 +54,11 @@
             android:label="@string/edit_user_info_page_name"
             android:theme="@style/Theme.News_application" />
 
+        <!-- AdminDashboardActivity -->
+        <activity
+            android:name=".views.AdminDashboardActivity"
+            android:exported="true"
+            android:label="@string/admin_dashboard_page_name"
+            android:theme="@style/Theme.News_application" />
     </application>
 </manifest>
