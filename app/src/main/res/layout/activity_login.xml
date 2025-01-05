@@ -1,37 +1,65 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/etEmailLogin"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:padding="12dp" />
-
-    <EditText
-        android:id="@+id/etPasswordLogin"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:padding="12dp" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:text="Login"
+    <!-- Header -->
+    <TextView
+        android:id="@+id/tvHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        android:text="News Application"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="32dp"
+        android:layout_alignParentTop="true" />
 
-    <Button
-        android:id="@+id/btnGoToSignUp"
-        android:text="Sign Up"
+    <!-- Login Form -->
+    <LinearLayout
+        android:id="@+id/loginForm"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
-</LinearLayout>
+        android:padding="16dp"
+        android:layout_centerInParent="true"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/etEmailLogin"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text" />
+
+        <EditText
+            android:id="@+id/etPasswordLogin"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnGoToSignUp"
+            android:text="Sign Up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+</RelativeLayout>

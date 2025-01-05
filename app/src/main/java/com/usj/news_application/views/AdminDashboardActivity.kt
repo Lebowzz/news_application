@@ -130,4 +130,3 @@ class AdminDashboardActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.etBirthDate).text.clear()
     }
 }
-//admin auth plus admin dashboard

@@ -57,6 +57,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
     }
 
+
+
+
     fun updateUserWithEmail(userId: Int, firstName: String, lastName: String, password: String, email: String): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {

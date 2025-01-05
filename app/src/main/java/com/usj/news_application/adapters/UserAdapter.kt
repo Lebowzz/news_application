@@ -15,6 +15,8 @@ class UserAdapter(private var users: List<User>) : RecyclerView.Adapter<UserAdap
         val tvFirstName: TextView = itemView.findViewById(R.id.tvFirstName)
         val tvLastName: TextView = itemView.findViewById(R.id.tvLastName)
         val tvEmail: TextView = itemView.findViewById(R.id.tvEmail)
+        val tvPassword: TextView = itemView.findViewById(R.id.tvPassword)
+        val tvBirthDate: TextView = itemView.findViewById(R.id.tvBirthDate) // Birthday TextView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -29,6 +31,8 @@ class UserAdapter(private var users: List<User>) : RecyclerView.Adapter<UserAdap
         holder.tvFirstName.text = "First Name: ${user.firstName}"
         holder.tvLastName.text = "Last Name: ${user.lastName}"
         holder.tvEmail.text = "Email: ${user.email}"
+        holder.tvPassword.text = "Password: ${user.password}"
+        holder.tvBirthDate.text = "Birthdate: ${user.birthdate}" // Display Birthday
     }
 
     override fun getItemCount(): Int = users.size
