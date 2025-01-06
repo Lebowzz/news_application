@@ -1,75 +1,100 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center"
-        android:padding="16dp">
+        android:layout_height="wrap_content">
 
         <!-- Header -->
         <TextView
             android:id="@+id/tvHeader"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Sign Up"
             android:textSize="24sp"
             android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="24dp" />
 
+        <!-- First Name -->
         <EditText
             android:id="@+id/etFirstName"
             android:hint="First Name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tvHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" />
 
+        <!-- Last Name -->
         <EditText
             android:id="@+id/etLastName"
             android:hint="Last Name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@id/etFirstName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" />
 
+        <!-- Email -->
         <EditText
             android:id="@+id/etEmailSignUp"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@id/etLastName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" />
 
+        <!-- Password -->
         <EditText
             android:id="@+id/etPasswordSignUp"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@id/etEmailSignUp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" />
 
+        <!-- Birthdate -->
         <EditText
             android:id="@+id/etBirthDate"
             android:hint="Birthdate (YYYY-MM-DD)"
             android:inputType="date"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@id/etPasswordSignUp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="16dp" />
 
+        <!-- Sign Up Button -->
         <Button
             android:id="@+id/btnSignUp"
             android:text="Sign Up"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/etBirthDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp" />
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

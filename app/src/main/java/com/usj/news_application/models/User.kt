@@ -6,7 +6,7 @@ data class User(
     val lastName: String,
     val email: String,
     val birthdate: String,
-    val password: String // Added password field
+    val password: String
 )
 
 
