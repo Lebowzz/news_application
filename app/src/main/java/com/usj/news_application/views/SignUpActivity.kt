@@ -81,7 +81,15 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             if (viewModel.registerUser(this, firstName, lastName, email, password, birthdate)) {
+                // Save the new user's email in SharedPreferences
+                val sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("loggedInEmail", email)
+                editor.apply()
+
                 Toast.makeText(this, "Account Created Successfully!", Toast.LENGTH_SHORT).show()
+
+                // Redirect to News Page (MainActivity)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
