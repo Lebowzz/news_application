@@ -5,8 +5,11 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".NewsApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -53,6 +56,15 @@
             android:exported="true"
             android:label="@string/edit_user_info_page_name"
             android:theme="@style/Theme.News_application" />
+        <activity
+            android:name=".views.MapPage"
+            android:exported="true"
+            android:label="@string/map"
+            android:theme="@style/Theme.News_application" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCUFM6fYcK7qGm2W91Z6w7C6zKIEDiZ3Xo" />
 
         <!-- AdminDashboardActivity -->
         <activity

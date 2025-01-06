@@ -7,6 +7,7 @@ data class News(
     val title: String,
     val content: String,
     val location: String,
+    val mapLocation: String,
     val datetime: String,
     @SerializedName("detailed_description")
     val detailedDescription: String

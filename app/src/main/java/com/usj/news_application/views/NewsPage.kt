@@ -43,6 +43,11 @@ class NewsPage : Fragment() {
             val intent = Intent(requireContext(), AccountInfoActivity::class.java)
             startActivity(intent)
         }
+        val mapButton: Button = toolbar.findViewById(R.id.mapButton)
+        mapButton.setOnClickListener {
+            val intent = Intent(requireContext(), MapPage::class.java)
+            startActivity(intent)
+        }
 
         // Initialize RecyclerView and ProgressBar
         val recyclerView: RecyclerView = view.findViewById(R.id.news_recycler_view)

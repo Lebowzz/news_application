@@ -15,9 +15,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|snap">
-
-            <!-- Add the userInfoButton here -->
-            <Button
+        <Button
                 android:id="@+id/userInfoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -30,6 +28,22 @@
                 android:textColor="@android:color/black"
                 android:backgroundTint="@android:color/white"
                 android:contentDescription="@string/user_info" />
+
+
+            <Button
+                android:id="@+id/mapButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/map"
+                android:textSize="18sp"
+
+                android:textColor="@android:color/black"
+                android:backgroundTint="@android:color/white"
+                android:contentDescription="@string/map" />
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
